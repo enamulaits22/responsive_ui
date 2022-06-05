@@ -1,20 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
-class TipsCardView extends StatelessWidget {
-  const TipsCardView({
+class TipsCardViewMobile extends StatelessWidget {
+  const TipsCardViewMobile({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: (Colors.grey[200])!,
-            blurRadius: 5.h,
-            offset: Offset(10.w, 2.h)
+            blurRadius: 25,
+            offset: const Offset(5, 20)
           ),
         ],
       ),
@@ -24,42 +25,42 @@ class TipsCardView extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(20))
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 2.h),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 3.w),
-                child: const Text(
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
                   'রাসূলুল্লাহ সা.-এর সকাল-সন্ধ্যার দুআ ও যিকর',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 0.8.h),
+              const SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 3.w),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    CircleAvatar(
-                      radius: 6.w, // Image radius
-                      backgroundImage: const NetworkImage('https://yt3.ggpht.com/ytc/AKedOLSRfUL8amwBZB7qA5mMv9NtM-V7r-RJcKTxsciB=s900-c-k-c0x00ffffff-no-rj'),
+                    const CircleAvatar(
+                      radius: 30, // Image radius
+                      backgroundImage: NetworkImage('https://yt3.ggpht.com/ytc/AKedOLSRfUL8amwBZB7qA5mMv9NtM-V7r-RJcKTxsciB=s900-c-k-c0x00ffffff-no-rj'),
                     ),
-                    SizedBox(width: 4.w),
+                    const SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
+                      children: const [
+                         Text(
                           'by Sheikh Ahmadullah\'s Tips',
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(vertical: 0.7.h),
-                          child: const Text(
+                          padding: EdgeInsets.symmetric(vertical: 4),
+                          child: Text(
                             'Category - Religion',
                             style: TextStyle(color: Colors.grey),
                           ),
                         ),
-                        const Text(
+                        Text(
                           'Published on - October 27, 2021',
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -73,15 +74,16 @@ class TipsCardView extends StatelessWidget {
                 children: [
                   const SizedBox(),
                   Container(
-                    padding:  EdgeInsets.only(right: 4.w, top: 2.h, bottom: 2.h),
+                    padding:  const EdgeInsets.only(right: 16, top: 8, bottom: 16),
                     // width: 160,
+                    height: 60,
                     child: ElevatedButton(
                       onPressed: () {},
                       child: Row(
-                        children: [
-                          const Icon(Icons.assignment),
-                          SizedBox(width: 2.w),
-                          const Text('Enroll Again'),
+                        children: const [
+                          Icon(Icons.assignment),
+                          SizedBox(width: 6),
+                          Text('Enroll Again'),
                         ],
                       ),
                       style: ElevatedButton.styleFrom(shape: const StadiumBorder(), primary: Colors.blue),
@@ -89,17 +91,17 @@ class TipsCardView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              CachedNetworkImage(
+                imageUrl: 'https://1.bp.blogspot.com/-AVKNipWSXYI/XsUF4P8YJnI/AAAAAAAAAWE/cAWsVAb_jNkX1uJeH7-BfKcpjWMA2IGlwCLcBGAsYHQ/s1600/laylatul-qadr-bangla-article-image.png',
+                fit: BoxFit.fill,
                 width: double.infinity,
-                height: 40.h,
-                child: Image.network(
-                  'https://1.bp.blogspot.com/-AVKNipWSXYI/XsUF4P8YJnI/AAAAAAAAAWE/cAWsVAb_jNkX1uJeH7-BfKcpjWMA2IGlwCLcBGAsYHQ/s1600/laylatul-qadr-bangla-article-image.png',
-                  fit: BoxFit.cover,
-                ),
+                height: 200,
+                placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-              SizedBox(height: 1.h),
+              const SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.all(2.w),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   children: [
                     IconButton(
@@ -122,7 +124,7 @@ class TipsCardView extends StatelessWidget {
                     const Spacer(),
                     ElevatedButton(
                       onPressed: () {},
-                      child: Text('Incomplete', style: TextStyle(fontSize: 10)),
+                      child: const Text('Incomplete'),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
                         shape: RoundedRectangleBorder(
@@ -130,7 +132,7 @@ class TipsCardView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 3.w),
+                    const SizedBox(width: 8),
                   ],
                 ),
               )

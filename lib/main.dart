@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_test/tips_details_page.dart';
-import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,17 +10,13 @@ class MyApp extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const TipsDetailsPage(),
-        );
-      }
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const TipsDetailsPage(),
     );
   }
 }
